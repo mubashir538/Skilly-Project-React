@@ -1,0 +1,25 @@
+/* Theme Colors
+Dark: #000717
+DarkLight: #161C2A 
+Primary: #EF233C
+Secondary: #FDC500
+Ternary: #9381FF
+Light: #EDF2F4
+  */
+/* 
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+} */
+
+body{
+  background-color: #000717;
+  color: #EDF2F4;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-collapse{
+  flex-grow: 0;
+}
