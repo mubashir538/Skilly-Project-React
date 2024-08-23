@@ -1,7 +1,7 @@
 /* Theme Colors
 Dark: #000717
 DarkLight: #161C2A 
-Primary: #EF233C
+Primary: #EF233C 
 Secondary: #FDC500
 Ternary: #9381FF
 Light: #EDF2F4
@@ -13,13 +13,21 @@ Light: #EDF2F4
   text-align: center;
 } */
 
-body{
+body {
   background-color: #000717;
-  color: #EDF2F4;
+  color: #edf2f4;
   padding: 0;
   margin: 0;
 }
 
-.navbar-collapse{
+.navbar-collapse {
   flex-grow: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+  padding: inherit;
+  margin: inherit;
 }

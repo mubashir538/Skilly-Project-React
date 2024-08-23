@@ -2,15 +2,15 @@ import React from 'react'
 import './footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '@fortawesome/free-regular-svg-icons'
-import logo from '../assets/1x/logo.png'
 import { Button, Container } from 'react-bootstrap';
+import { assets } from '../../assets/app';
 
 export const Footer = () => {
   return (
     <>
     <div className='foothead'>
         <div className="logo">
-            <img src={logo} alt="logo" />
+            <img src={assets.logo} alt="logo" />
         </div>
         <div className="pages">
             <h1>Pages</h1>
@@ -27,7 +27,7 @@ export const Footer = () => {
             <p>Youtube</p>
         </div>
         <div className="contact">
-        <button class="btn-shine">
+        <button className="btn-shine">
             <span>Contact Me</span>
         </button>
             <h1>Contact</h1>

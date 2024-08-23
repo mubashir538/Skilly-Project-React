@@ -1,0 +1,117 @@
+.navbar{
+    background-color: #EF233C;
+    color: #EDF2F4;
+    display: flex;
+    justify-content: space-between;
+    padding: .8rem 2rem;
+    font-weight: 400;
+}
+
+.logo{
+    font-family: 'Righteous',sans-serif;
+}
+
+.nav-items{
+    font-family: 'montserrat',sans-serif;
+    font-weight: 500;
+}
+
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0 2rem;
+    font-size: 1.2rem;
+    list-style-type: none;
+}
+
+li{
+    margin: 0 1rem;
+}
+
+li:after{
+    content: '';
+    display: block;
+    margin-top: 5%;
+    width: 100%;
+    height: 5px;
+    background: #EDF2F4;
+    border-radius: 2px;
+    transform: scale(0);
+    transition: width .3s ease,transform .3s ease;
+}
+li:hover::after{
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.selected{
+    color: #FDC500;
+    font-weight: 800;
+}
+
+.navbar>.logo>img{
+    width: 40%;
+}
+.selected::after{
+    background-color: #FDC500;
+}
+
+a{
+    color: inherit;
+    text-decoration: inherit;
+    cursor: pointer;
+    padding: inherit;
+    font-family: inherit;
+  }
+/* From Uiverse.io by gagan-gv */ 
+.btn {
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: #FDC500;
+    color: #000717;
+  }
+  
+  .btn:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+  }
+  
+  .btn .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  
+  .btn .text {
+    transform: translateX(55px);
+  }
+  
+  .btn:hover .icon {
+    width: 175px;
+  }
+  
+  .btn:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+  
+  .btn:active .icon {
+    transform: scale(0.85);
+  }
