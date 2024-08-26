@@ -1,0 +1,70 @@
+.button {
+  display: inline-block;
+  width: 40%;
+  margin: 2rem 1rem;
+  border-radius: 10px;
+  overflow-x: hidden;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.button>.icon {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5 ease;
+}
+.button>.icon > img {
+  width: 80%;
+  transition: all 0.5 ease;
+}
+
+.button>.text {
+  font-family: "montserrat", sans-serif;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+  transition: all 0.5s ease;
+  transform: translateX(20%);
+  opacity: 0;
+  vertical-align: middle;
+}
+
+.button>.text > h1 {
+  margin: auto;
+  color: #9381ff;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.button>.text > p {
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #020a1e;
+  filter: drop-shadow(0 0 0.7rem #9381ff);
+}
+.button:hover .icon {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.button:hover .text{
+    transform: translateX(-100%);
+    opacity: 1;
+}
+

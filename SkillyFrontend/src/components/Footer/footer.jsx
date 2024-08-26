@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '@fortawesome/free-regular-svg-icons'
 import { Button, Container } from 'react-bootstrap';
 import { assets } from '../../assets/app';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
@@ -14,10 +15,10 @@ export const Footer = () => {
         </div>
         <div className="pages">
             <h1>Pages</h1>
-            <p>Categories</p>
-            <p>Instructors</p>
-            <p>Courses</p>
-            <p>About</p>
+            <p><Link to="/category">Categories</Link></p>
+            <p><Link to="/instructor">Instructors</Link></p>
+            <p><Link to="/courses">Courses</Link></p>
+            <p><Link to="/about">About</Link></p>
         </div>
         <div className="social">
             <h1>Social</h1>

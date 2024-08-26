@@ -1,0 +1,133 @@
+.card1 {
+  background-color: #040c24;
+  display: inline-block;
+  width: 30%;
+  margin: 2rem 1rem;
+  border-radius: 5px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  /* border: 1px solid #9381FF ; */
+  filter: drop-shadow(0 0 0.3rem #9381FF);
+}
+
+.card1 > img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card1 > h1 {
+  color: #edf2f4;
+  font-family: "montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 1rem 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  padding-bottom: 0;
+  white-space: normal;
+}
+
+.card1 > p {
+  color: #edf2f4;
+  font-family: "montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  padding: 0 2rem;
+  white-space: normal;
+}
+
+.card1 > button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  margin: 2rem;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.card1 > button.learn-more {
+  width: 12rem;
+  height: auto;
+}
+
+.card1 > button.learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #9381FF;
+  border-radius: 1.625rem;
+}
+
+.card1 > button.learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #edf2f4;
+}
+
+.card1 > button.learn-more .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+.card1 > button.learn-more .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #edf2f4;
+  border-right: 0.125rem solid #edf2f4;
+  transform: rotate(45deg);
+}
+
+.card1 > .learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: #9381FF;;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  font-family: 'montserrat',sans-serif;
+  font-weight: 500;
+  
+}
+
+.card1 > button:hover .circle {
+  width: 100%;
+}
+
+.card1 > button:hover .circle .icon.arrow {
+  background: #edf2f4;
+  transform: translate(1rem, 0);
+}
+
+.card1 > button:hover .button-text {
+  color: #edf2f4;
+  text-transform: uppercase;
+}

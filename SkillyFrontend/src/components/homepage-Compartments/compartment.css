@@ -1,0 +1,21 @@
+.compartment{
+    /* padding: 2rem 4rem; */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.compartment>h1{
+    color: #EDF2F4;
+    font-size: 1.5rem;
+    font-family: 'Quicksand',sans-serif;
+    letter-spacing: .5rem;
+}
+
+hr{
+    border: 1px solid #383f52;
+    opacity: .3;
+    width: 70%;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0 auto;
+}

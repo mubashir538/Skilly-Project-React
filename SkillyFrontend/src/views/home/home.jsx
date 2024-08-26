@@ -1,6 +1,10 @@
-import React from "react";
 import { assets } from "../../assets/app";
 import "./home.css";
+import Compartment from "../../components/homepage-Compartments/compartment";
+import CategorySection from "../../components/categorysection/categorysection";
+import Carousel from "../../components/carousel/carousel";
+import Card1 from "../../components/card1/card1";
+import HorizontalScroller from "../../components/horizontalscroller/horizontalscroller";
 
 const Home = () => {
   return (
@@ -26,6 +30,40 @@ const Home = () => {
           <img src={assets.hompage_title} alt="" />
         </div>
       </div>
+      <Compartment title="Inspired By" padding={"4rem"} headpad={"0"}>
+        <div className="inspired">
+          <img src={assets.udemy} alt="" />
+          <img src={assets.skillshare} alt="" />
+          <img src={assets.unacademy} alt="" />
+          <img src={assets.udacity} alt="" />
+          <img src={assets.coursera} alt="" />
+        </div>
+      </Compartment>
+      <Compartment title="Top Categories" padding={"1rem"} headpad={"3rem"}>
+        <HorizontalScroller>
+          <CategorySection />
+          <CategorySection />
+          <CategorySection />
+        </HorizontalScroller>
+      </Compartment>
+      <Compartment title="Top Instructors" padding={"0"} headpad={"4rem"}>
+        <Carousel />
+      </Compartment>
+      <Compartment title="Top Courses" padding={"1rem"} headpad={"3rem"}>
+        <div className="cards">
+          <HorizontalScroller>
+            <Card1 />
+            <Card1 />
+            <Card1 />
+            <Card1 />
+          </HorizontalScroller>
+        </div>
+      </Compartment>
+      <Compartment title="Features" padding={"4rem"} headpad={"0"}>
+        <div className="features">
+          
+        </div>
+      </Compartment>
     </>
   );
 };

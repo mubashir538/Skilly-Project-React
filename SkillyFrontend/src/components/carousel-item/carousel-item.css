@@ -1,0 +1,48 @@
+.ci {
+  width: 100%;
+  background-color: #ef233c;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  padding: 5rem;
+}
+
+.ci > .image {
+  width: 50%;
+  margin: 0 4rem;
+}
+
+.ci > .image > img {
+  width: 100%;
+  border-radius: 200%;
+  border: 10px solid #edf2f4;
+  object-fit: cover;
+}
+
+.ci > .image:hover img {
+  border-color: #FDC500;
+}
+
+
+.ci>.text{
+    color: #edf2f4;
+    font-family: 'montserrat',sans-serif;
+    text-align: center;
+    font-weight: 500;
+}
+
+.ci>.text>.cdesc{
+    margin: 1rem auto;
+    width: 80%;
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+.ci>.text>.cname{
+    font-size: 2.5rem;
+    color: #FDC500;
+    font-family: 'righteous',sans-serif;
+    font-size: 3.5rem;
+
+}

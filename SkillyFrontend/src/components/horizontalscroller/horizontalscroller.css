@@ -1,0 +1,14 @@
+
+.hscroller {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .hscroller::-webkit-scrollbar {
+    display: none;
+  }
+  

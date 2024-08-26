@@ -7,28 +7,16 @@
     background: -webkit-linear-gradient(35deg, hsla(353, 86%, 54%, 1) 0%, hsla(249, 100%, 75%, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EF233C", endColorstr="#9381FF", GradientType=1 );  */
   background: #000717;
-  background: linear-gradient(
-    330deg,
-    #000717 50%,
-    #161C2A 100%
-  );
-  background: -moz-linear-gradient(
-    330deg,
-    #000717 50%,
-    #161C2A 100%
-  );
-  background: -webkit-linear-gradient(
-    330deg,
-    #000717 50%,
-    #161C2A 100%
-  );
+  background: linear-gradient(330deg, #000717 50%, #161c2a 100%);
+  background: -moz-linear-gradient(330deg, #000717 50%, #161c2a 100%);
+  background: -webkit-linear-gradient(330deg, #000717 50%, #161c2a 100%);
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#000717", endColorstr=#161C2A , GradientType=1 );
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.image {
+.header>.image {
   padding: 2rem 4rem;
 }
 
@@ -178,4 +166,17 @@
 .btn2:hover {
   -webkit-box-shadow: inset 0px 0px 25px #fdc500;
   box-shadow: inset 0px 0px 25px #fdc500;
+}
+
+.inspired {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.inspired > img {
+  width: 10rem;
 }
