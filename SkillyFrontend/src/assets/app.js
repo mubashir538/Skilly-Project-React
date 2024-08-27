@@ -18,8 +18,19 @@ import udemy from "./udemy.png";
 import udacity from "./udacity.png";
 import unacademy from "./unacademy.png";
 import coursera from "./coursera.png";
+import f1 from "./discover.svg";
+import f2 from "./online learning.svg";
+import f3 from "./learn Outcomes.svg";
+import about from "./services.webp";
+import aboutus from "./aboutus.svg";
+import vision from "./vision.jpg";
+import saying from "./poet.svg";
 
 export const assets = {
+  saying,
+  vision,
+  aboutus,
+  about,
   logo,
   logo_small,
   coursera,
@@ -40,4 +51,7 @@ export const assets = {
   udemy,
   unacademy,
   udacity,
+  f1,
+  f2,
+  f3,
 };

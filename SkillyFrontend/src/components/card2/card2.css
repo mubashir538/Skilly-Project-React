@@ -1,0 +1,75 @@
+.card-content {
+  padding: 15% 3% 7% 3%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.name-profession {
+  padding: 5%;
+  padding-top: 10%;
+  text-align: center;
+}
+
+.name {
+  display: block;
+  color: #edf2f4;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.profession {
+  color: #edf2f4;
+  opacity: 0.7;
+  font-weight: 200;
+  font-size: 1.2rem;
+  padding-top: 2%;
+}
+
+.btnpic {
+  background-color: #9381ff;
+  border: none;
+  color: #edf2f4;
+  padding: 3% 7% 3% 7%;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.imge img {
+  width: 100%;
+  border: 7px solid #9381ff;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.imge {
+  width: 40%;
+}
+
+.cb > .card {
+  background-color: #020b21;
+  width: 100%;
+  border-radius: 10px;
+  padding: 2rem 0;
+  transition: all 0.2s;
+}
+
+.cb {
+  width: 100%;
+  background-image: linear-gradient(163deg, #fdc500 0%, #f2d879 100%);
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+.cb > .card:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+
+.cb:hover {
+  box-shadow: 0px 0px 30px 1px #f2d8798c;
+}

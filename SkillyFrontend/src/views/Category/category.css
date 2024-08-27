@@ -1,0 +1,17 @@
+.page-title{
+    color: #EDF2F4;
+    font-family: 'Righteous',sans-serif;
+    font-size: 3rem;
+    margin: 4rem;
+    text-align: center;
+}
+
+.categories{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    margin: 0 5rem;
+    padding: 5rem 2rem;
+}

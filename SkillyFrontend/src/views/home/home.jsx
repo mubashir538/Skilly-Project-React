@@ -5,8 +5,12 @@ import CategorySection from "../../components/categorysection/categorysection";
 import Carousel from "../../components/carousel/carousel";
 import Card1 from "../../components/card1/card1";
 import HorizontalScroller from "../../components/horizontalscroller/horizontalscroller";
+import Feature from "../../components/feature/feature";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="header">
@@ -20,10 +24,10 @@ const Home = () => {
             on Youtube and to earn a great Job with new skilset
           </div>
           <div className="btns">
-            <button className="btn1">
+            <button className="btn1" onClick={() => {navigate('/signup')}}>
               <span>Get Started</span>
             </button>
-            <button className="btn2">Learn More</button>
+            <button className="btn2" onClick={() => {navigate('/about')}}>Learn More</button>
           </div>
         </div>
         <div className="image">
@@ -61,7 +65,30 @@ const Home = () => {
       </Compartment>
       <Compartment title="Features" padding={"4rem"} headpad={"0"}>
         <div className="features">
-          
+          <Feature
+            position={1}
+            title="What Will You Discover?"
+            desc="Explore new skills, deepen existing passions, and get lost in creativity. What you find just might surprise and inspire you."
+            img={assets.f1}
+            btnText="Browse Courses"
+            btnlink="courses"
+          />
+          <Feature
+            position={2}
+            title="Online Learning Designed For Real Life"
+            desc="Move your creative journey forward without putting life on hold. Skillshare's short online classes help you find inspiration that fits your routine."
+            img={assets.f2}
+            btnText="Explore Site"
+            btnlink="category"
+          />
+          <Feature
+            position={3}
+            title="Learner outcomes"
+            desc="87% of people learning for professional development report career benefits like getting a promotion, a raise, or starting a new career"
+            img={assets.f3}
+            btnText="Learn More"
+            btnlink="about"
+          />
         </div>
       </Compartment>
     </>

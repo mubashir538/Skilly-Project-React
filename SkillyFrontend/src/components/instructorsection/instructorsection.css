@@ -1,0 +1,22 @@
+.inssec{
+    margin: 2rem 0;
+    padding: 3rem 2rem;
+}
+
+.inssec>.title{
+    font-size: 2rem;
+    color: #EDF2F4;
+    font-family: 'quicksand',sans-serif;
+    font-weight: 600;
+    text-align: center;
+    padding: 2rem;
+}
+
+.inshr{
+    opacity: .3;
+    margin: 2rem auto;
+    background-color: #9381FF;
+    width: 40%;
+    height: .3rem;
+    border-radius: 20px;
+}

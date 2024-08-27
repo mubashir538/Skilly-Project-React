@@ -1,0 +1,320 @@
+.body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .5s ease;
+  align-content: center;
+  background-color: #000717;
+}
+
+.body > .card {
+  width: 80vw;
+  height: 90vh;
+  background-color: #edf2f4;
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  overflow: hidden;
+  align-items: center;
+  align-content: center;
+  border-radius: 20px;
+  transition: all .5s ease;
+  flex-direction: row;
+}
+
+.body > .card > .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 50%;
+  font-family: "montserrat", sans-serif;
+  font-weight: 400;
+  color: #000717;
+  height: 100%;
+  padding: 1rem;
+  transition: all .5s ease;
+}
+
+.body > .card > .form > h1 {
+  font-weight: 700;
+  color: #ef233c;
+  font-size: 2rem;
+  margin: 1rem;
+  transition: all .5s ease;
+}
+
+.body > .card > .form > p {
+  font-size: 1.1rem;
+  width: 70%;
+  text-align: center;
+  transition: all .5s ease;
+}
+.body > .card > .image {
+  width: 50%;
+  height: 100%;
+  background-color: #ef233c;
+  display: flex;
+  transition: all .5s ease;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #edf2f4;
+  font-family: 'montserrat',sans-serif;
+  font-size: 1.2rem;
+}
+
+.body > .card > .image > img {
+  width: 100%;
+  padding: 4rem;
+  transition: all .5s ease;
+}
+
+.body > .card > .image > * > a{
+  color: #fbbc05;
+  font-weight: 700;
+  transition: all .5s ease;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: all .5s ease;
+  margin: 1.5rem;
+  width: 100%;
+}
+
+.buttons > .btn-about {
+  margin: 0;
+  color: #ef233c;
+  transition: all .5s ease;
+  border: 2px solid #ef233c;
+}
+
+.buttons > .btn-about:hover {
+  background-color: #ef233c;
+  color: #edf2f4;
+  transition: all .5s ease;
+  box-shadow: 0 0 10px #ef233c, 0 0 40px #ef233c, 0 0 80px #ef233c;
+}
+
+/*  */
+
+.googlebutton {
+  padding: 1rem;
+  font-weight: 700;
+  font-family: "montserrat", sans-serif;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-radius: 35px;
+  align-items: center;
+  transition: all .5s ease;
+  border: solid #000717 2px;
+  outline: none;
+}
+
+.googlebutton > .svg {
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+
+.googlebutton .text {
+  z-index: 10;
+  font-size: 1.1rem;
+}
+
+.googlebutton:hover .text {
+  animation: text forwards 0.3s;
+}
+
+@keyframes text {
+  from {
+    color: black;
+  }
+
+  to {
+    color: white;
+  }
+}
+
+.svg {
+  z-index: 6;
+}
+
+.googlebutton:hover::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 9%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border-radius: 300px;
+  animation: wave1 2.5s ease-in-out forwards;
+}
+
+.googlebutton:hover::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 9%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border-radius: 300px;
+  animation: wave2 2.5s ease-in-out forwards;
+}
+
+@keyframes wave1 {
+  0% {
+    z-index: 1;
+    background: #eb4335;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  1% {
+    z-index: 1;
+    background: #eb4335;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  25% {
+    z-index: 1;
+    background: #eb4335;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  26% {
+    z-index: 3;
+    background: #34a853;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  50% {
+    z-index: 3;
+    background: #34a853;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  70% {
+    z-index: 3;
+    background: #34a853;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  100% {
+    z-index: 3;
+    background: #34a853;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    z-index: 2;
+    background: #fbbc05;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  11% {
+    z-index: 2;
+    background: #fbbc05;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  35% {
+    z-index: 2;
+    background: #fbbc05;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  39% {
+    z-index: 2;
+    background: #fbbc05;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  40% {
+    z-index: 4;
+    background: #4285f4;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  64% {
+    z-index: 4;
+    background: #4285f4;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  100% {
+    z-index: 4;
+    background: #4285f4;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+}
+
+.googlebutton:hover .red {
+  animation: disappear 0.1s forwards;
+  animation-delay: 0.1s;
+}
+
+.googlebutton:hover .yellow {
+  animation: disappear 0.1s forwards;
+  animation-delay: 0.3s;
+}
+
+.googlebutton:hover .green {
+  animation: disappear 0.1s forwards;
+  animation-delay: 0.7s;
+}
+
+.googlebutton:hover .blue {
+  animation: disappear 0.1s forwards;
+  animation-delay: 1.1s;
+}
+
+@keyframes disappear {
+  from {
+    filter: brightness(1);
+  }
+
+  to {
+    filter: brightness(100);
+  }
+}

@@ -1,0 +1,9 @@
+.coursessection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 2rem;
+    padding: 7rem 1rem;
+}

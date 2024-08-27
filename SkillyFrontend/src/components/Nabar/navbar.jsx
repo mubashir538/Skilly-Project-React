@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./navbar.css";
 import { assets } from "../../assets/app";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
+import temp from "../../assets/fa.jpg";
 
 export const Navbar = () => {
   const [page, setpage] = useState("home");
+  const location = useLocation();
 
   const changePages = (path) => {
     setpage(path);
@@ -26,7 +28,7 @@ export const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="icon">
+          <span className="icon">
             <svg viewBox="0 0 175 80" width="40" height="40">
               <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
               <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
@@ -34,41 +36,63 @@ export const Navbar = () => {
             </svg>
           </span>
 
-          <span class="text">MENU</span>
+          <span className="text">MENU</span>
         </button>
-        <div className="nav-items collapse navbar-collapse" id="navbarText">
-          <ul>
-            <li
-              className={page == "home" ? "selected" : ""}
-              onClick={() => changePages("home")}
-            >
-              <Link to="/home"> Home</Link>
-            </li>
-            <li
-              onClick={() => changePages("category")}
-              className={page === "category" ? "selected" : ""}
-            >
-              <Link to="/category">Categories</Link>
-            </li>
-            <li
-              onClick={() => changePages("instructor")}
-              className={page === "instructor" ? "selected" : ""}
-            >
-              <Link to="/instructor">Instructors</Link>
-            </li>
-            <li
-              onClick={() => changePages("courses")}
-              className={page === "courses" ? "selected" : ""}
-            >
-              <Link to="/courses">Courses</Link>
-            </li>
-            <li
-              onClick={() => changePages("about")}
-              className={page === "about" ? "selected" : ""}
-            >
-              <Link to={"/about"}>About</Link>
-            </li>
-          </ul>
+
+        <div className="align">
+          <div className="nav-items collapse navbar-collapse" id="navbarText">
+            <ul>
+              <li
+                className={location.pathname === "/home" ? "selected" : ""}
+                onClick={() => changePages("home")}
+              >
+                <Link to="/home"> Home</Link>
+              </li>
+              <li
+                onClick={() => changePages("category")}
+                className={location.pathname === "/category" ? "selected" : ""}
+              >
+                <Link to="/category">Categories</Link>
+              </li>
+              <li
+                onClick={() => changePages("instructor")}
+                className={
+                  location.pathname === "/instructor" ? "selected" : ""
+                }
+              >
+                <Link to="/instructor">Instructors</Link>
+              </li>
+              <li
+                onClick={() => changePages("courses")}
+                className={location.pathname === "/courses" ? "selected" : ""}
+              >
+                <Link to="/courses">Courses</Link>
+              </li>
+              <li
+                onClick={() => changePages("about")}
+                className={location.pathname === "/about" ? "selected" : ""}
+              >
+                <Link to={"/about"}>About</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="logout">
+            <img
+              src={temp}
+              alt=""
+              className=" dropdown-toggle"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            />
+            <ul class="dropdown-menu">
+              <li>
+                <Link class="dropdown-item" to={"/login"}>
+                  Log Out
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>
