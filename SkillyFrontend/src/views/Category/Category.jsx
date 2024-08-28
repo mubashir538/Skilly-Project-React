@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Category.css";
 import CategorySection from "../../components/categorysection/categorysection";
 import { assets } from "../../assets/app";
-
+import axios from "axios";
 const Category = () => {
   let cat = {};
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:8000/category")
+      .then((res) => {
+        let data = res.data.data;
+        data.map((value) => {
+          let cat = {
+            id: value.id,
+            name: value.name,
+            img: value.image,
+            desc: value.description,
+          };
+          setCategories((prev) => [...prev, cat]);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-  cat.name = "Business";
-  cat.img = assets.business_cat;
-  cat.desc = "This is a Category";
-  let categories = [];
-  for (let i = 0; i < 10; i++) {
-    categories.push(cat);
-  }
   return (
     <>
       <div className="page-title">Categories</div>
       <div className="categories">
-        {categories.map((cat, index) => (
-           <CategorySection
-           key={index}
-           name={cat.name}
-           img={cat.img}
-           desc={cat.desc}
-         />
-         
+        {categories.map((item, index) => (
+          <CategorySection
+            key={item.id}
+            name={item.name}
+            img={assets[item.img]}
+            desc={item.desc}
+          />
         ))}
       </div>
     </>

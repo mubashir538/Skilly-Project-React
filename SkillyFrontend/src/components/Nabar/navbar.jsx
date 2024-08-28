@@ -85,9 +85,9 @@ export const Navbar = () => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             />
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
               <li>
-                <Link class="dropdown-item" to={"/login"}>
+                <Link className="dropdown-item" to={"/login"}>
                   Log Out
                 </Link>
               </li>

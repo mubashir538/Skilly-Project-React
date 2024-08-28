@@ -9,15 +9,18 @@ import Home from "./views/home/home";
 import About from "./views/about/about";
 import Courses from "./views/courses/courses";
 import Category from "./views/category/category";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate,Navigate } from "react-router-dom";
 import { assets } from "./assets/app";
 import Input from "./components/input/input";
 
 function App() {
   const location = useLocation();
 
+  // const navigate = useNavigate();
   const shownavfoot =
     location.pathname === "/login" || location.pathname === "/signup";
+
+  // navigate("/home");
   return (
     <>
       {!shownavfoot && <Navbar />}
@@ -69,6 +72,7 @@ function App() {
         <Route path="/category" element={<Category />} />
         <Route path="/about" element={<About />} />
         <Route path="/instructor" element={<Instructor />} />
+        <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
       {!shownavfoot && <Footer />}
     </>

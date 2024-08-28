@@ -1,44 +1,54 @@
 .button {
   display: inline-block;
+  vertical-align: middle; /* Align inline-block elements to the middle */
   width: 40%;
   margin: 2rem 1rem;
   border-radius: 10px;
   overflow-x: hidden;
   padding: 2rem;
-  justify-content: center;
-  align-items: center;
+  height: 80vh;
+  position: relative; /* Needed for absolute positioning of children */
   white-space: nowrap;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   cursor: pointer;
+  background-color: #020a1e; /* Add a background to see the button */
 }
 
-.button>.icon {
+.button > .icon, .button > .text {
+  position: absolute; /* Absolute positioning within the button */
+  top: 50%; /* Position the center of the element */
+  left: 50%; /* Position the center of the element */
+  transform: translate(-50%, -50%); /* Adjust position to truly center */
+}
+
+.button > .icon {
   display: inline-block;
+  width: 70%;
   justify-content: center;
   align-items: center;
-  transition: all 0.5 ease;
-}
-.button>.icon > img {
-  width: 80%;
-  transition: all 0.5 ease;
+  transition: all 0.5s ease;
 }
 
-.button>.text {
-  font-family: "montserrat", sans-serif;
+.button > .icon > img {
+  width: 80%;
+  transition: all 0.5s ease;
+}
+
+.button > .text {
+  font-family: "Montserrat", sans-serif;
   display: inline-block;
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: 80%;
   white-space: normal;
   transition: all 0.5s ease;
-  transform: translateX(20%);
   opacity: 0;
-  vertical-align: middle;
 }
 
-.button>.text > h1 {
+.button > .text > h1 {
   margin: auto;
   color: #9381ff;
   font-weight: 700;
@@ -46,7 +56,7 @@
   margin: 1rem 0;
 }
 
-.button>.text > p {
+.button > .text > p {
   font-weight: 400;
   font-size: 1.1rem;
   margin: 0;
@@ -58,13 +68,13 @@
   background-color: #020a1e;
   filter: drop-shadow(0 0 0.7rem #9381ff);
 }
+
 .button:hover .icon {
-  transform: translateX(-100%);
+  transform: translate(-150%, -50%);
   opacity: 0;
 }
 
-.button:hover .text{
-    transform: translateX(-100%);
-    opacity: 1;
+.button:hover .text {
+  transform: translate(-50%, -50%);
+  opacity: 1;
 }
-

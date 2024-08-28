@@ -1,6 +1,7 @@
 .card-content {
   padding: 15% 3% 7% 3%;
   display: flex;
+  height: 70vh;
   flex-flow: column;
   justify-content: space-around;
   align-items: center;

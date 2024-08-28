@@ -2,20 +2,31 @@ import React from "react";
 import "./card2.css";
 import temp from "../../assets/fa.jpg";
 import { Link } from "react-router-dom";
-const Card2 = () => {
+
+const Card2 = ({ details }) => {
+  details.channelLink = "https://www.youtube.com/c/" + details.channelLink;
+  const {
+    id,
+    instructor,
+    channelName,
+    channelLink,
+    categoryid,
+    instructorprofile,
+    channelAbout,
+  } = details;
   return (
     <>
       <div className="cb">
         <div className="card">
-          <div class="card-content">
-            <div class="imge">
-              <img src={temp} alt="" width="100%" />
+          <div className="card-content">
+            <div className="imge">
+              <img src={instructorprofile} alt="" width="100%" />
             </div>
-            <div class="name-profession">
-              <span class="name">Farhan Aqeel</span>
-              <span class="profession">Farhan Aqeel</span>
+            <div className="name-profession">
+              <span className="name">{instructor}</span>
+              <span className="profession">{channelName}</span>
             </div>
-            <Link class="btnpic" href="https://www.youtube.com/c/FarhanAqeel">
+            <Link target="_blank" className="btnpic" to={channelLink}>
               Check Out
             </Link>
           </div>

@@ -3,6 +3,7 @@ import logo_small from "./1x/logo-small.png";
 import business_cat from "./business.svg";
 import coding_cat from "./coding.svg";
 import crypto_cat from "./crypto.svg";
+import video_cat from "./animation.svg";
 import dataAnaltics_cat from "./data analytics.svg";
 import digitalMarketing_cat from "./digital marketing.svg";
 import graphic_cat from "./Graphic design.svg";
@@ -28,6 +29,7 @@ import saying from "./poet.svg";
 
 export const assets = {
   saying,
+  video_cat,
   vision,
   aboutus,
   about,

@@ -6,11 +6,56 @@ import Carousel from "../../components/carousel/carousel";
 import Card1 from "../../components/card1/card1";
 import HorizontalScroller from "../../components/horizontalscroller/horizontalscroller";
 import Feature from "../../components/feature/feature";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
 
+  const [topcat, settopcat] = useState([]);
+  const [topins, settopins] = useState([]);
+  useEffect(() => {
+    axios.get("http://127.0.0.1:8000/category").then(
+      (res) => {
+        let data = res.data.data;
+        data.map((value, index) => {
+          if (index < 5) {
+            let cat = {
+              id: value.id,
+              name: value.name,
+              img: value.image,
+              desc: value.description,
+            };
+            settopcat((prev) => [...prev, cat]);
+          }
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+
+    axios
+      .get("http://127.0.0.1:8000/instructor")
+      .then((res) => {
+        let data = res.data.data;
+        data.map((value, index) => {
+          if (index < 4) {
+            let ins = {
+              id: value.id,
+              instructor: value.instructor,
+              instructorprofile: value.instructorprofile,
+              channelAbout: value.channelAbout,
+            };
+            settopins((prev) => [...prev, ins]);
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <div className="header">
@@ -24,10 +69,22 @@ const Home = () => {
             on Youtube and to earn a great Job with new skilset
           </div>
           <div className="btns">
-            <button className="btn1" onClick={() => {navigate('/signup')}}>
+            <button
+              className="btn1"
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
               <span>Get Started</span>
             </button>
-            <button className="btn2" onClick={() => {navigate('/about')}}>Learn More</button>
+            <button
+              className="btn2"
+              onClick={() => {
+                navigate("/about");
+              }}
+            >
+              Learn More
+            </button>
           </div>
         </div>
         <div className="image">
@@ -45,13 +102,18 @@ const Home = () => {
       </Compartment>
       <Compartment title="Top Categories" padding={"1rem"} headpad={"3rem"}>
         <HorizontalScroller>
-          <CategorySection />
-          <CategorySection />
-          <CategorySection />
+          {topcat.map((item, index) => (
+            <CategorySection
+              key={item.id}
+              name={item.name}
+              img={assets[item.img]}
+              desc={item.desc}
+            />
+          ))}
         </HorizontalScroller>
       </Compartment>
       <Compartment title="Top Instructors" padding={"0"} headpad={"4rem"}>
-        <Carousel />
+        <Carousel value={topins}/>
       </Compartment>
       <Compartment title="Top Courses" padding={"1rem"} headpad={"3rem"}>
         <div className="cards">
