@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 
-const Input = ({ typ, placeholder }) => {
+const Input = ({ typ, placeholder, setdata }) => {
   const [passee, setpassee] = useState(typ !== "password");
   const [text, settext] = useState("");
 
@@ -20,7 +20,10 @@ const Input = ({ typ, placeholder }) => {
         required=""
         type={inputType}
         className="input"
-        onChange={(e) => settext(e.target.value)}
+        onChange={(e) => {
+          settext(e.target.value);
+          setdata(e.target.value);
+        }}
       />
       <span className="highlight"></span>
       <span className="bar"></span>

@@ -15,7 +15,11 @@ const Home = () => {
 
   const [topcat, settopcat] = useState([]);
   const [topins, settopins] = useState([]);
+  const [courses, setCourses] = useState([]);
+
   useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Skilly - Home";
     axios.get("http://127.0.0.1:8000/category").then(
       (res) => {
         let data = res.data.data;
@@ -55,7 +59,31 @@ const Home = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    axios
+      .get("http://127.0.0.1:8000/course")
+      .then((res) => {
+        let data = res.data.data;
+        data.map((value, index) => {
+          if (index < 10) {
+            let course = {
+              id: value.id,
+              name: value.name,
+              desc: value.description,
+              img: value.image,
+              catid: value.categoryid,
+              insid: value.Instructorid,
+              courselink: value.courselink,
+            };
+            setCourses((prev) => [...prev, course]);
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
+
   return (
     <>
       <div className="header">
@@ -113,15 +141,14 @@ const Home = () => {
         </HorizontalScroller>
       </Compartment>
       <Compartment title="Top Instructors" padding={"0"} headpad={"4rem"}>
-        <Carousel value={topins}/>
+        <Carousel value={topins} />
       </Compartment>
       <Compartment title="Top Courses" padding={"1rem"} headpad={"3rem"}>
         <div className="cards">
           <HorizontalScroller>
-            <Card1 />
-            <Card1 />
-            <Card1 />
-            <Card1 />
+            {courses.map((item, index) => (
+              <Card1 key={item.id} item={item} />
+            ))}
           </HorizontalScroller>
         </div>
       </Compartment>

@@ -2,7 +2,10 @@ import React, { Children } from "react";
 import "./signup-login.css";
 import Input from "../../components/input/input";
 import { assets } from "../../assets/app";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import Cookies from "js-cookie";
 
 const Signup = ({
   type,
@@ -12,7 +15,11 @@ const Signup = ({
   btnlink,
   pic,
   children,
+  details,
 }) => {
+  const navigate = useNavigate();
+  const [error, seterror] = useState(<></>);
+
   let text = (
     <>
       {" "}
@@ -21,8 +28,17 @@ const Signup = ({
         <p>{para}</p>
         <div className="inputs">
           {children}
+          {error}
           <div className="buttons">
-            <Link to={btnlink} className="btn-about">
+            <Link
+              to={btnlink}
+              className="btn-about"
+              onClick={() => {
+                {
+                  type === "signup" ? handleSignup() : handleLogin();
+                }
+              }}
+            >
               {buttonText}
             </Link>
             <button className="googlebutton">
@@ -72,7 +88,7 @@ const Signup = ({
             </>
           ) : (
             <>
-              Not Part of the Community? <Link to="/signup">Signup</Link>
+              Not Part of the Community? <Link to={"/signup"}>Signup</Link>
             </>
           )}
         </p>
@@ -91,6 +107,147 @@ const Signup = ({
     </>
   );
 
+  const handleSignup = async () => {
+    seterror(<></>);
+    if (details.password !== details.conpass) {
+      seterror(
+        <>
+          <p
+            style={{
+              color: "#EF233C",
+              fontFamily: ["montserrat", "sans-serif"],
+              textAlign: "center",
+              fontWeight: 600,
+            }}
+          >
+            Password and Confirm Password should be Same
+          </p>
+        </>
+      );
+    } else {
+      seterror(<></>);
+      let data = {
+        name: details.name,
+        email: details.email,
+        password: details.password,
+        profile: details.profile,
+      };
+
+      console.log("details: ", data.profile);
+      if (data.profile == null) {
+        seterror(
+          <>
+            <p
+              style={{
+                color: "#EF233C",
+                fontFamily: ["montserrat", "sans-serif"],
+                textAlign: "center",
+                fontWeight: 600,
+              }}
+            >
+              Please Upload a Image
+            </p>
+          </>
+        );
+        return;
+      }
+      if (
+        data.profile.type !== "image/png" &&
+        data.profile.type !== "image/jpeg" &&
+        data.profile.type !== "image/jpg"
+      ) {
+        seterror(
+          <>
+            <p
+              style={{
+                color: "#EF233C",
+                fontFamily: ["montserrat", "sans-serif"],
+                textAlign: "center",
+                fontWeight: 600,
+              }}
+            >
+              Only .png or .jpg formats are Allowed
+            </p>
+          </>
+        );
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("password", data.password);
+      formData.append("profile", data.profile);
+      const response = await axios.post(
+        "http://127.0.0.1:8000/signup/",
+        formData,
+        {
+          Headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      if ("refresh" in response.data) {
+        navigate("/login");
+      }
+      if ("error" in response.data) {
+        seterror(
+          <>
+            <p
+              style={{
+                color: "#EF233C",
+                fontFamily: ["montserrat", "sans-serif"],
+                textAlign: "center",
+                fontWeight: 600,
+              }}
+            >
+              {response.data.error}
+            </p>
+          </>
+        );
+      }
+    }
+  };
+
+  const handleLogin = async () => {
+    seterror(<></>);
+    const data = {
+      email: details.email,
+      password: details.password,
+    };
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/login/", data);
+      if ("error" in response.data) {
+        seterror(
+          <>
+            <p
+              style={{
+                color: "#EF233C",
+                fontFamily: ["montserrat", "sans-serif"],
+                textAlign: "center",
+                fontWeight: 600,
+              }}
+            >
+              {response.data.error}
+            </p>
+          </>
+        );
+      }
+      if ("success" in response.data) {
+        Cookies.set("access_token", response.data.access, {
+          expires: 1,
+        });
+        Cookies.set("refresh_token", response.data.refresh, { expires: 1 });
+        Cookies.set("user", JSON.stringify(response.data.user), {
+          expires: 1,
+        });
+
+        navigate("/home");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <div className="body">

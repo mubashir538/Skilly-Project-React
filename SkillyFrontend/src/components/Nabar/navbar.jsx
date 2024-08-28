@@ -1,18 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import { assets } from "../../assets/app";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import temp from "../../assets/fa.jpg";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 export const Navbar = () => {
   const [page, setpage] = useState("home");
   const location = useLocation();
+  const navigate = useNavigate();
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    getImage();
+
+  }, []);
 
   const changePages = (path) => {
     setpage(path);
     console.log(path);
   };
 
+  const handlelogout = () => {
+    localStorage.clear();
+    Cookies.remove("refresh_token");
+    Cookies.remove("user");
+    Cookies.remove("access_token");
+    window.open("/login", "_self");
+  };
+
+  const getImage = () => {
+    console.log(Cookies.get("user"));
+    if (Cookies.get("user") != null) {
+      let user = Cookies.get("user");
+      let values = user.split(",");
+      let profile = values[4];
+      let image = profile.split('"')[3];
+      setProfile("http://127.0.0.1:8000" + image);
+    } else {
+      setProfile(assets.displaypic);
+    }
+  };
   return (
     <>
       <div className="container-fluid navbar navbar-expand-md">
@@ -78,19 +107,45 @@ export const Navbar = () => {
           </div>
           <div className="logout">
             <img
-              src={temp}
+              src={profile}
               alt=""
               className=" dropdown-toggle"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             />
+
             <ul className="dropdown-menu">
-              <li>
-                <Link className="dropdown-item" to={"/login"}>
-                  Log Out
-                </Link>
-              </li>
+              {Cookies.get("refresh_token") == null ? (
+                <>
+                  <li>
+                    <Link className="dropdown-item" to={"/signup"}>
+                      SignUp
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to={"/login"}>
+                      LogIn
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link className="dropdown-item" to={"/profile"}>
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="dropdown-item"
+                      onClick={() => handlelogout()}
+                    >
+                      Log Out
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

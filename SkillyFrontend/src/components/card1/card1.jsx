@@ -2,14 +2,28 @@ import React from "react";
 import "./card1.css";
 import { assets } from "../../assets/app";
 import temp from "../../assets/fa.jpg";
-const Card1 = () => {
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+const Card1 = ({ item }) => {
+  const [instructor, setInstructor] = useState("");
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:8000/instructorfromid/${item.insid}`)
+      .then((res) => {
+        setInstructor(res.data.data.channelName);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <div className="card1">
-        <img src={temp} alt="" />
-        <h1>Computer Programming</h1>
-        <p>Tech-IQ</p>
-        <button className="learn-more">
+        <img src={item.img} alt="" />
+        <h1>{item.name}</h1>
+        <p>{instructor}</p>
+        <button className="learn-more" onClick={() => window.open(item.courselink, "_blank")}>
           <span className="circle" aria-hidden="true">
             <span className="icon arrow"></span>
           </span>
