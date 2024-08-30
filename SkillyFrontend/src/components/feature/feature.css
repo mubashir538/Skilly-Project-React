@@ -46,22 +46,4 @@
   margin: 0;
 }
 
-.btn-about {
-  color: #9381ff;
-  border: 1px solid #9381ff;
-  padding: 1rem 2rem;
-  background-color: transparent;
-  border-radius: 7px;
-  font-size: 1.2rem;
-  font-family: "Montserrat";
-  font-weight: 500;
-  margin-top: 2rem;
-}
 
-.btn-about:hover {
-  background-color: #9381ff;
-  color: #edf2f4;
-  box-shadow: 0 0 10px #9381ff, 0 0 40px #9381ff, 0 0 80px #9381ff;
-  font-weight: 500;
-  transition-delay: 100ms;
-}

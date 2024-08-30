@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import Loader from "../../components/loader/loader";
+import ButtonAbt from "../../components/button/button";
 
 const CourseDescription = ({ setVideo }) => {
   const id = useParams().id;
@@ -184,9 +185,12 @@ const CourseDescription = ({ setVideo }) => {
           <div className="text">
             <div className="name">{data.username}</div>
           </div>
-          <Link to={data.courselink} target="_blank" className="btn-about">
-            View Course on Youtube
-          </Link>
+          <ButtonAbt
+            text="View Course on Youtube"
+            path={data.channelLink}
+            target={"_blank"}
+            color={"#9381ff"}
+          ></ButtonAbt>
         </div>
       </div>
     </div>

@@ -6,6 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import ButtonAbt from "../../components/button/button";
+import Toast from "../../components/toast/toast";
+import {
+  handleLogin,
+  handleSignup,
+} from "../../codes/functions/handleSignUp-Login";
 
 const Signup = ({
   type,
@@ -15,17 +21,22 @@ const Signup = ({
   btnlink,
   pic,
   children,
+  setPlay,
   details,
 }) => {
   const navigate = useNavigate();
-  const [error, seterror] = useState(<></>);
+  const [error, seterror] = useState("");
+  const [toast, setToast] = useState(false);
+  const [toastColor, setToastColor] = useState("#EF233C");
 
   useEffect(() => {
     window.scrollTo(0, 0);
     type === "signup"
       ? (document.title = "Skilly - SignUp")
       : (document.title = "Skilly - Login");
-  });
+    seterror("");
+  }, [location.pathname]);
+
   let text = (
     <>
       {" "}
@@ -34,19 +45,23 @@ const Signup = ({
         <p>{para}</p>
         <div className="inputs">
           {children}
-          {error}
+          {type === "login" ? (
+            <p className="fgot" onClick={() => navigate("/forgot")}>
+              Forgot Password
+            </p>
+          ) : (
+            <></>
+          )}
           <div className="buttons">
-            <Link
-              to={btnlink}
-              className="btn-about"
-              onClick={() => {
+            <ButtonAbt
+              text={buttonText}
+              click={() => {
                 {
-                  type === "signup" ? handleSignup() : handleLogin();
+                  type === "signup" ? handleSign() : handleLogin();
                 }
               }}
-            >
-              {buttonText}
-            </Link>
+              color="#EF233C"
+            />
             <button className="googlebutton">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,152 +127,17 @@ const Signup = ({
       {image} {text}
     </>
   );
-
-  const handleSignup = async () => {
-    seterror(<></>);
-    if (details.password !== details.conpass) {
-      seterror(
-        <>
-          <p
-            style={{
-              color: "#EF233C",
-              fontFamily: ["montserrat", "sans-serif"],
-              textAlign: "center",
-              fontWeight: 600,
-            }}
-          >
-            Password and Confirm Password should be Same
-          </p>
-        </>
-      );
-    } else {
-      seterror(<></>);
-      let data = {
-        name: details.name,
-        email: details.email,
-        password: details.password,
-        profile: details.profile,
-      };
-
-      if (data.profile == null) {
-        seterror(
-          <>
-            <p
-              style={{
-                color: "#EF233C",
-                fontFamily: ["montserrat", "sans-serif"],
-                textAlign: "center",
-                fontWeight: 600,
-              }}
-            >
-              Please Upload a Image
-            </p>
-          </>
-        );
-        return;
-      }
-      if (
-        data.profile.type !== "image/png" &&
-        data.profile.type !== "image/jpeg" &&
-        data.profile.type !== "image/jpg"
-      ) {
-        seterror(
-          <>
-            <p
-              style={{
-                color: "#EF233C",
-                fontFamily: ["montserrat", "sans-serif"],
-                textAlign: "center",
-                fontWeight: 600,
-              }}
-            >
-              Only .png or .jpg formats are Allowed
-            </p>
-          </>
-        );
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append("name", data.name);
-      formData.append("email", data.email);
-      formData.append("password", data.password);
-      formData.append("profile", data.profile);
-      const response = await axios.post(
-        "http://127.0.0.1:8000/signup/",
-        formData,
-        {
-          Headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      if ("refresh" in response.data) {
-        navigate("/login");
-      }
-      if ("error" in response.data) {
-        seterror(
-          <>
-            <p
-              style={{
-                color: "#EF233C",
-                fontFamily: ["montserrat", "sans-serif"],
-                textAlign: "center",
-                fontWeight: 600,
-              }}
-            >
-              {response.data.error}
-            </p>
-          </>
-        );
-      }
-    }
+  const handleSign = () => {
+    handleSignup(setToast, seterror, details, navigate, setToastColor);
+    setToast(true);
   };
 
-  const handleLogin = async () => {
-    seterror(<></>);
-    const data = {
-      email: details.email,
-      password: details.password,
-    };
-    try {
-      const response = await axios.post("http://127.0.0.1:8000/login/", data);
-      if ("error" in response.data) {
-        seterror(
-          <>
-            <p
-              style={{
-                color: "#EF233C",
-                fontFamily: ["montserrat", "sans-serif"],
-                textAlign: "center",
-                fontWeight: 600,
-              }}
-            >
-              {response.data.error}
-            </p>
-          </>
-        );
-      }
-      if ("success" in response.data) {
-        Cookies.set("access_token", response.data.access, {
-          expires: 1,
-        });
-        Cookies.set("refresh_token", response.data.refresh, { expires: 1 });
-        Cookies.set("user", JSON.stringify(response.data.user), {
-          expires: 1,
-        });
-
-        navigate("/home");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
   return (
     <>
       <div className="body">
         <div className="card">{type === "login" ? login : signup}</div>
       </div>
+      <Toast message={error} play={toast} setPlay={setToast} color={toastColor} />
     </>
   );
 };

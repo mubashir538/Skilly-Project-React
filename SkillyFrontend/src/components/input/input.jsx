@@ -2,12 +2,24 @@ import React from "react";
 import "./input.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const Input = ({ typ, placeholder, setdata }) => {
   const [passee, setpassee] = useState(typ !== "password");
   const [text, settext] = useState("");
+  const location = useLocation();
 
+  useEffect(() => {
+    const clearview = () => {
+      settext("");
+    }
+    clearview()
+  },[location.pathname])
+
+  // let changeText = (e) => {
+  //   settext(e.target.value);
+  // };
   let handlepass = () => {
     setpassee((prev) => !prev);
   };
@@ -17,6 +29,7 @@ const Input = ({ typ, placeholder, setdata }) => {
   return (
     <div className="group">
       <input
+      value={text}
         required=""
         type={inputType}
         className="input"

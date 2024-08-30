@@ -1,0 +1,46 @@
+.myToast {
+  background-color: var(--color);
+  color: #EDF2F4;
+  font-family: "quicksand", sans-serif;
+  font-weight: 700;
+  opacity: 0;
+  backdrop-filter: blur(510px);
+  /* border: 2px solid #EF233C ; */
+  width: 30%;
+  height: fit-content;
+  padding: 1rem 3rem;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-100%);
+
+  z-index: 9999;
+  box-shadow: 0 0 0.5rem 0.5rem #00071768;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.myToast::after {
+  content: "";
+  width: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #fdc500;
+  opacity: 1;
+  margin-top: 1rem;
+  height: 5px;
+  animation: progressBar 3s linear forwards 0s infinite;
+  display: block;
+}
+
+@keyframes progressBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

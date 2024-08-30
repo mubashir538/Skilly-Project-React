@@ -10,6 +10,7 @@ from django.core.files.storage import FileSystemStorage
 import requests as rq
 from django.conf import settings
 import isodate
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -182,6 +183,13 @@ def user(request,id):
         serializer = UserSerializer(user)
         return Response({'status':200,'data':serializer.data})
     
+@api_view(['POST'])
+def searchUser(request):
+    email = request.data.get('email')
+    if User.objects.filter(email=email).exists():
+        return Response({'status':200,'data':True})
+    else:
+        return Response({'status':200,'data':False})
 
 @api_view(['GET','POST'])
 def profile(request,id):
@@ -251,7 +259,36 @@ def loadVideos(request,id):
 
     return Response({'status': '200','data':videos})
     
-
+@api_view(['POST'])
+def sendotp(request):
+    email = request.data.get('email')
+    otp = request.data.get('otp')
+    subject = 'PASSWORD RESET OTP FROM SKILLY'
+    message = f'''The OTP to Reset your SKilly Account Password is given below, Please do not Share this OTP with anyone.
+                YOUR OTP IS: {otp}'''
+    email_from = settings.EMAIL_HOST_USER
+    email_to = email
+    try:
+        send_mail(subject,message,email_from,[email_to])
+        return Response({'status': 200})
+    except Exception as e:
+        print(e)
+        return Response({'status': 400})
+    
+@api_view(['POST'])
+def changePass(request):
+    email = request.data.get('email')
+    password = request.data.get('password')
+    try:
+        user = User.objects.get(email=email)
+        user.password = password
+        user.save(update_fields=['password'])
+        print(user)
+        return Response({'status': 200})
+    except Exception as e:
+        print(e)
+        return Response({'status': 400})
+    
 def urlShortener(url):
     try:
         response = rq.get("http://tinyurl.com/api-create.php?url="+url)

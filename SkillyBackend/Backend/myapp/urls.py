@@ -15,6 +15,9 @@ urlpatterns = [
     path('login/',views.login,name='login'),
     path('user/<str:id>',views.user,name='user'),
     path('loadVideos/<str:id>',views.loadVideos,name='loadVideos'),
+    path('searchuser/',views.searchUser,name='searchUser'),
+    path('sendotp/',views.sendotp,name='sendotp'),
+    path('changePassword/',views.changePass,name='changePass'),
 ]
 
 if settings.DEBUG:

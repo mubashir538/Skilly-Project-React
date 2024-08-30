@@ -318,3 +318,17 @@
     filter: brightness(100);
   }
 }
+
+.fgot {
+  color: #ef233c;
+  font-weight: 600;
+  font-family: "montserrat", sans-serif;
+  transition: all 0.2s ease;
+  text-align: end;
+  text-decoration: none;
+}
+
+.fgot:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

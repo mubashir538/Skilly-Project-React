@@ -1,6 +1,7 @@
 import React from "react";
 import "./feature.css";
 import { Link } from "react-router-dom";
+import ButtonAbt from "../button/button";
 const Feature = ({ position, title, desc, img, btnText, btnlink }) => {
   let path = "/" + btnlink;
   let text = (
@@ -8,9 +9,7 @@ const Feature = ({ position, title, desc, img, btnText, btnlink }) => {
       <div className="title">{title}</div>
       <hr />
       <div className="desc">{desc}</div>
-      <Link to={path} className="btn-about">
-        {btnText}
-      </Link>
+    <ButtonAbt text={btnText} path={path} color="#9381ff" target={"_self"}></ButtonAbt>
     </div>
   );
 

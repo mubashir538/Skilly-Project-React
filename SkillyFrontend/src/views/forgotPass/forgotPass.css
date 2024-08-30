@@ -44,12 +44,27 @@
   width: 70%;
 }
 
-.screen > .card > .btn-about {
+.screen > .card > .inputs > .btn-about {
   color: #ef233c;
   border-color: #ef233c;
+  text-align: center;
 }
 
-.screen > .card > .btn-about:hover {
+.screen > .card > .inputs > p {
+  color: #ef233c;
+  font-weight: 600;
+  font-family: "montserrat", sans-serif;
+  transition: all 0.2s ease;
+  text-align: end;
+  text-decoration: none;
+}
+
+.screen > .card > .inputs > p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.screen > .card > .inputs > .btn-about:hover {
   background-color: #ef233c;
   color: #edf2f4;
   box-shadow: 0 0 5px #ef233c, 0 0 20px #ef233c, 0 0 40px #ef233c;
