@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import { assets } from "../../assets/app";
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import temp from "../../assets/fa.jpg";
 import Cookies from "js-cookie";
 import axios from "axios";
 
@@ -14,12 +13,10 @@ export const Navbar = () => {
 
   useEffect(() => {
     getImage();
-
   }, []);
 
   const changePages = (path) => {
     setpage(path);
-    console.log(path);
   };
 
   const handlelogout = () => {
@@ -31,7 +28,6 @@ export const Navbar = () => {
   };
 
   const getImage = () => {
-    console.log(Cookies.get("user"));
     if (Cookies.get("user") != null) {
       let user = Cookies.get("user");
       let values = user.split(",");

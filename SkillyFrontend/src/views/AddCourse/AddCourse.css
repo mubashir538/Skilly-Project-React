@@ -1,0 +1,107 @@
+.addcourse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120vh;
+  color: #edf2f4;
+  padding: 3rem 0;
+  margin: 0;
+}
+
+.addcourse > .addcard {
+  background-color: #ef233c;
+  padding: 3rem 1rem;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 20px;
+  border: none;
+}
+.addcourse > .addcard > .heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-family: "montserrat", sans-serif;
+  text-align: center;
+  color: #fdc500;
+}
+.addcourse > .addcard > .inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.button2 {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-family: 'quicksand', sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  color: #000717;
+  padding: .5rem 2rem;
+  cursor: pointer;
+  margin: 2rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 0.5em;
+  background: #edf2f4;
+  border: 1px solid #fdc500;
+  box-shadow: .5rem .5rem 1rem #260000, -.5rem -.5rem 1rem #670505;
+}
+
+.button2:active {
+  color: #c5c5c5;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.button2:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #fdc500;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:hover {
+  color: #000717;
+  border: 1px solid #fdc500;
+}
+
+.button2:hover:before {
+  top: -35%;
+  background-color: #fdc500;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2:hover:after {
+  top: -45%;
+  background-color: #fdc500;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}

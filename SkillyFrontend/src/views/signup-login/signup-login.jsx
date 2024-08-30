@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React, { Children, useEffect } from "react";
 import "./signup-login.css";
 import Input from "../../components/input/input";
 import { assets } from "../../assets/app";
@@ -20,6 +20,12 @@ const Signup = ({
   const navigate = useNavigate();
   const [error, seterror] = useState(<></>);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    type === "signup"
+      ? (document.title = "Skilly - SignUp")
+      : (document.title = "Skilly - Login");
+  });
   let text = (
     <>
       {" "}
@@ -133,7 +139,6 @@ const Signup = ({
         profile: details.profile,
       };
 
-      console.log("details: ", data.profile);
       if (data.profile == null) {
         seterror(
           <>

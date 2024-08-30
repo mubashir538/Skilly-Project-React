@@ -8,6 +8,8 @@ import axios from "axios";
 const Instructor = () => {
   const [cat, setcat] = useState([]);
   useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Skilly - Instructor";
     axios
       .get("http://127.0.0.1:8000/category")
       .then((res) => {

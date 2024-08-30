@@ -26,11 +26,13 @@ import about from "./services.webp";
 import aboutus from "./aboutus.svg";
 import vision from "./vision.jpg";
 import saying from "./poet.svg";
-import displaypic from "./profile display.png"
+import displaypic from "./profile display.png";
+import add from "./ad.svg";
 
 export const assets = {
   displaypic,
   saying,
+  add,
   video_cat,
   vision,
   aboutus,

@@ -1,0 +1,197 @@
+.coursedesc > .head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 50vh;
+  width: 100%;
+  background-color: #ef233c;
+  padding: 5rem 1rem;
+}
+
+.coursedesc > .head > .img {
+  width: 40%;
+}
+
+.coursedesc > * > h1 {
+  font-size: 2.5rem;
+  color: #9381ff;
+  font-family: "montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  margin: 2rem;
+}
+
+.coursedesc > .head > .img > img {
+  width: 80%;
+}
+
+.coursedesc > .head > .text {
+  width: 50%;
+  color: #edf2f4;
+  font-family: "montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.coursedesc > .head > .text > h1 {
+  font-size: 2.5rem;
+  color: #fdc500;
+  font-family: "quicksand", sans-serif;
+  font-weight: 700;
+}
+
+.coursedesc > .head > .text > .channel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.coursedesc > .head > .text > .channel > img {
+  width: 30%;
+  border-radius: 50%;
+  margin: 1.5rem;
+  margin-left: 0;
+}
+
+.coursedesc > .head > .text > .channel > p {
+  font-size: 1.5rem;
+  font-family: "montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.videos {
+  background-color: #020a1e;
+  box-shadow: 0 0 0.8rem #9381ff;
+  color: #efefef;
+  border-radius: 7px;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.videostable {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.row-t {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: .5rem;
+  transition: all .2s ease-in-out;
+}
+
+.row-t:hover{
+background-color: #9381ff;
+color: #020a1e;
+cursor: pointer;
+
+}
+
+.thead {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fdc500;
+  margin: 1rem 0;
+}
+
+.row-t > .sno {
+  width: 10%;
+}
+
+.row-t > .title {
+  width: 60%;
+}
+
+.row-t > .duration {
+  width: 30%;
+}
+
+.playlistsection,
+.channelinfo,
+.moreopt {
+  margin: 4rem 0;
+}
+
+.channelinfo > .info ,
+.moreopt > .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moreopt > .info {
+  justify-content: flex-start;
+  padding-left: 15rem;
+
+}
+
+.channelinfo > .info > .image,
+.moreopt > .info > .image {
+  width: 30%;
+  margin: 2rem;
+}
+
+.moreopt > .info > .image {
+  width: 15%;
+}
+
+
+.channelinfo > .info > .image > img,
+.moreopt > .info > .image > img {
+  width: 80%;
+  border-radius: 50%;
+}
+.moreopt>.info{
+  gap: 2rem;
+  align-items: center;
+}
+
+.moreopt>.info>.btn-about{
+  margin-top: 0;
+}
+
+.channelinfo > .info > .text,
+.moreopt > .info > .text {
+  width: 50%;
+  font-family: "montserrat", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  font-weight: 300;
+  color: #edf2f4;
+}
+
+.moreopt > .info > .text {
+  width: fit-content;
+}
+.channelinfo > .info > .text > .name,
+.moreopt > .info > .text > .name {
+  font-size: 2.5rem;
+  color: #9381ff;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+}
+
+.channelinfo > .info > .text > .cname {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ef233c;
+  padding-bottom: 0.5rem;
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./about.css";
 import { assets } from "../../assets/app";
 import Feature from "../../components/feature/feature";
@@ -8,6 +8,10 @@ const About = () => {
     "Welcome to our website, a place where learning is free for everyone. We believe that education should be accessible to all, so we've gathered the best courses from YouTube and linked them here for you. Whether you're just starting or want to advance your skills, our platform offers a variety of courses in different subjects. Our goal is to make it easier for you to learn at your own pace, without any cost. Explore our courses and start learning today!";
   let vision =
     "Our Visionis to teach the Young Generation about the new Skills for developing the Creativity and Mindfundlness in the Youth and make them to work for their Country with the help of their professional Skills";
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Skilly - About";
+  }, []);
   return (
     <>
       <div className="head">

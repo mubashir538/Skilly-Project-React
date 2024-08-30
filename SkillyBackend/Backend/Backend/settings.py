@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +51,18 @@ INSTALLED_APPS = [
     'myapp',
     'rest_framework',
     'corsheaders',
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
 ]
+
+# SITE_ID = 1
+# AUTHENTICATION_BACKENDS = [
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
+# LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

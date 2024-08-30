@@ -9,6 +9,7 @@ class Courses(models.Model):
     categoryid = models.IntegerField()
     Instructorid = models.IntegerField()
     courselink = models.CharField(max_length=300,blank=True,null=True)
+    user = models.IntegerField(blank=True,null=True)
 
 class Instructor(models.Model):
     id = models.AutoField

@@ -23,7 +23,7 @@ const Card1 = ({ item }) => {
         <img src={item.img} alt="" />
         <h1>{item.name}</h1>
         <p>{instructor}</p>
-        <button className="learn-more" onClick={() => window.open(item.courselink, "_blank")}>
+        <button className="learn-more" onClick={() => window.open('/courseDescription/' + item.id, "_self")}>
           <span className="circle" aria-hidden="true">
             <span className="icon arrow"></span>
           </span>

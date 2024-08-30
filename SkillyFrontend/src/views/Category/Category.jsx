@@ -7,6 +7,8 @@ const Category = () => {
   let cat = {};
   const [categories, setCategories] = useState([]);
   useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Skilly - Category";
     axios
       .get("http://127.0.0.1:8000/category")
       .then((res) => {
