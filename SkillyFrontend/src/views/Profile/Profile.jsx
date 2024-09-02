@@ -2,9 +2,10 @@ import React from "react";
 import "./Profile.css";
 import Card3 from "../../components/card3/card3";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
 import { assets } from "../../assets/app";
+import { getProfileFormID } from "../../codes/api/User";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
   const [courses, setCourses] = useState([]);
@@ -15,32 +16,9 @@ const Profile = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Skilly - Profile";
-    let userid = Cookies.get("user").split('"')[2].split(":")[1].split(",")[0];
-    console.log(userid);
     window.scrollTo(0, 0);
     document.title = "Skilly - Profile";
-    axios
-      .get("http://127.0.0.1:8000/profile/" + userid)
-      .then((res) => {
-        setProfile("http://127.0.0.1:8000/" + res.data.user.profile);
-        setName(res.data.user.name);
-        setEmail(res.data.user.email);
-        res.data.courses.map((value) => {
-          let course = {
-            id: value.id,
-            name: value.name,
-            desc: value.description,
-            img: value.image,
-            catid: value.categoryid,
-            insid: value.Instructorid,
-            courselink: value.courselink,
-          };
-          setCourses((prev) => [...prev, course]);
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getProfileFormID(setProfile, setName, setEmail, setCourses);
   }, []);
   return (
     <>
@@ -57,6 +35,13 @@ const Profile = () => {
         <div className="courses">
           <div className="head">
             <div className="title">Your Courses</div>
+            <FontAwesomeIcon
+              icon={faPlus}
+              size="2xl"
+              onClick={() => {
+                window.open("/addcourse", "_self");
+              }}
+            />
           </div>
           <div className="coursessection">
             {courses.map((value) => {
@@ -68,7 +53,6 @@ const Profile = () => {
                   img: assets.add,
                   name: "Add Course",
                   courselink: "",
-                  
                 }}
                 key={-1}
               ></Card3>

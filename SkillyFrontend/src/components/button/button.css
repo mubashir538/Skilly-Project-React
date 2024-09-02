@@ -17,5 +17,6 @@
     0 0 80px var(--color);
   font-weight: 500;
   transition-delay: 100ms;
+  cursor: pointer;
 }
     

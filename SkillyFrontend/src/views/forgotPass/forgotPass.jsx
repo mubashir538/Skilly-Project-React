@@ -3,54 +3,97 @@ import "./forgotPass.css";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import ButtonAbt from "../../components/button/button";
+import {
+  ValidateConfirmPassword,
+  ValidateEmail,
+  ValidatePassword,
+} from "../../codes/functions/validations";
 
-const Forgot = ({ heading, para, children, type, data }) => {
+const Forgot = ({
+  heading,
+  para,
+  children,
+  type,
+  data,
+  play,
+  setPlay,
+  setToast,
+  setToastColor,
+}) => {
   const navigate = useNavigate();
   const location = useLocation();
+  let email, otp;
   useEffect(() => {
     if (type === "otp") {
-      let otp = location.state.otp;
-      let email = location.state.email;
+      otp = location.state.otp;
+      email = location.state.email;
     }
   }, []);
-  console.log(type);
+
+  const sendemail = async (data, otp) => {
+    let response = await axios.post("http://127.0.0.1:8000/sendotp/", {
+      email: data,
+      otp: otp,
+    });
+    if (response.data.status === 200) {
+      setPlay(true);
+      setToastColor("#10B981");
+      setToast("OTP Sent Successfully");
+    } else {
+      setPlay(true);
+      setToast("Error Sending OTP,Please Try Again Later!");
+      setToastColor("#EF233C");
+    }
+  };
 
   const handleEmail = async () => {
+    let valid = ValidateEmail(data);
+    if (!valid) {
+      setPlay(true);
+      setToast("Invalid Email Address");
+      setToastColor("#EF233C");
+      return;
+    }
     const response = await axios.post(`http://127.0.0.1:8000/searchuser/`, {
       email: data,
     });
     if (response.data.data === true) {
       let otp = Math.floor(100000 + Math.random() * 900000);
-      const sendemail = async () => {
-        console.log("in mail");
-        let response = await axios.post("http://127.0.0.1:8000/sendotp/", {
-          email: data,
-          otp: otp,
-        });
-        if (response.data.status === 200) {
-          alert("The Email has been Sent to Your Account");
-        } else {
-          alert("Error Sending Your Email, please Try Again Later...");
-        }
-      };
-      sendemail();
+      sendemail(data, otp);
       navigate("/otp", { state: { email: data, otp: otp } });
     } else {
-      alert("Invalid Email Address");
+      setPlay(true);
+      setToast("Invalid Email Address");
+      setToastColor("#EF233C");
     }
   };
 
   const handleotp = () => {
     if (data != location.state.otp) {
-      alert("Invalid OTP");
+      setPlay(true);
+      setToast("Invalid Email Address");
+      setToastColor("#EF233C");
     } else {
       navigate("/forgotpass", { state: { email: location.state.email } });
     }
-    //
   };
 
   const handlePassword = async () => {
-    console.log(location.state);
+    let password = ValidatePassword(data[0]);
+    if (!password.status) {
+      setPlay(true);
+      setToast(password.message);
+      setToastColor("#EF233C");
+      return;
+    }
+    let confirm = ValidateConfirmPassword(data[0], data[1]);
+    if (!confirm.status) {
+      setPlay(true);
+      setToast(confirm.message);
+      setToastColor("#EF233C");
+      return;
+    }
+
     if (data[0] === data[1]) {
       const response = await axios.post(
         `http://127.0.0.1:8000/changePassword/`,
@@ -59,12 +102,15 @@ const Forgot = ({ heading, para, children, type, data }) => {
           email: location.state.email,
         }
       );
-      console.log(response.data);
       if (response.data.status == 200) {
-        alert("Password Changed Successfully");
+        setPlay(true);
+        setToast("Password Changed Successfully");
+        setToastColor("#10B981");
         navigate("/login");
       } else {
-        alert("Error Changing Password");
+        setPlay(true);
+        setToast("Error Changing Password");
+        setToastColor("#EF233C");
       }
     } else {
       alert("Password and Confirm Password Should be same!");
@@ -92,7 +138,17 @@ const Forgot = ({ heading, para, children, type, data }) => {
           <div className="para">{para}</div>
           <div className="inputs">
             {children}
-            {type === "otp" ? <p>Resend Email</p> : <></>}
+            {type === "otp" ? (
+              <p
+                onClick={() => {
+                  sendemail(email, otp);
+                }}
+              >
+                Resend Email
+              </p>
+            ) : (
+              <></>
+            )}
             <ButtonAbt
               text={type === "forgot" ? "Send" : "Verify"}
               click={() => handleFunction()}

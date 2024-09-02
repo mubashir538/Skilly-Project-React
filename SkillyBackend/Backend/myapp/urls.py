@@ -18,6 +18,8 @@ urlpatterns = [
     path('searchuser/',views.searchUser,name='searchUser'),
     path('sendotp/',views.sendotp,name='sendotp'),
     path('changePassword/',views.changePass,name='changePass'),
+    path('deletecourse/<str:id>',views.deleteCourse,name='deleteCourse'),
+    path('editcourse/<str:id>',views.editCourse,name='editCourse'),
 ]
 
 if settings.DEBUG:

@@ -10,13 +10,13 @@
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  cursor: pointer;
-  /* border: 1px solid #9381FF ; */
-  filter: drop-shadow(0 0 0.3rem #9381FF);
+  border: 1px solid #9381FF ;
+  filter: drop-shadow(0 0 0.5rem #9381FF);
 }
 
 .card1 > img {
   width: 100%;
+  height: 35vh;
   object-fit: cover;
 }
 
@@ -25,6 +25,7 @@
   font-family: "montserrat", sans-serif;
   font-weight: 700;
   font-size: 2rem;
+  height: 15vh;
   margin: 1rem 0;
   width: 100%;
   padding: 1rem 2rem;

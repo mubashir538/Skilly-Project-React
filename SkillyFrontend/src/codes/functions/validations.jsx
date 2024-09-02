@@ -24,7 +24,6 @@ const ValidatePassword = (password) => {
     };
   }
   if (password.length < 8) {
-    console.log(password, " ", password.length);
     return {
       status: false,
       message: "Password should be atleast 8 characters long",

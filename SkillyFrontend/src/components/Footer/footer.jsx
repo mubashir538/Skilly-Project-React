@@ -2,7 +2,6 @@ import React from "react";
 import "./footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopyright } from "@fortawesome/free-regular-svg-icons";
-import { Button, Container } from "react-bootstrap";
 import { assets } from "../../assets/app";
 import { Link } from "react-router-dom";
 
@@ -66,7 +65,12 @@ export const Footer = () => {
           </p>
         </div>
         <div className="contact">
-          <button className="btn-shine">
+          <button
+            className="btn-shine"
+            onClick={() =>
+              window.open("https://wa.me/+923232730519","_blank")
+            }
+          >
             <span>Contact Me</span>
           </button>
           <h1>Contact</h1>

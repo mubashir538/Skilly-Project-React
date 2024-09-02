@@ -1,0 +1,37 @@
+.cardsins {
+  /* width: 100vw; */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  margin: 3rem 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-direction: row;
+}
+
+.cardsins > .cb {
+  width: 30vw;
+}
+
+.notFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5rem;
+  padding: 2rem;
+  width: 100%;
+  height: 60vh;
+  color: #edf2f4;
+  font-family: "montserrat", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  user-select: none;
+  font-weight: 400;
+}
+
+.notFound > img {
+  width: 15vw;
+  margin-bottom: 4rem;
+}

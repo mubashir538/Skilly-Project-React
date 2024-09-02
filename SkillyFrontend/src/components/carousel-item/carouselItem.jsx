@@ -1,7 +1,5 @@
 import React from "react";
 import "./carousel-item.css";
-import { assets } from "../../assets/app";
-import temp from "../../assets/fa.jpg"
 
 const CarouselItem = ({details}) => {
   return (

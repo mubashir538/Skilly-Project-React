@@ -7,6 +7,7 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import Loader from "../../components/loader/loader";
 import ButtonAbt from "../../components/button/button";
+import { getCourseDescription, getCourseVideos } from "../../codes/api/Courses";
 
 const CourseDescription = ({ setVideo }) => {
   const id = useParams().id;
@@ -24,76 +25,16 @@ const CourseDescription = ({ setVideo }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Skilly - Description";
-    const fetchapis = async () => {
-      const response1 = await axios
-        .get(`http://127.0.0.1:8000/courseid/${id}`)
-        .then((res) => {
-          let val = res.data.data;
-          let course = {
-            id: val.id,
-            name: val.name,
-            description: val.description,
-            image: val.image,
-            Instructorid: val.Instructorid,
-            courselink: val.courselink,
-            user: val.user,
-            categoryid: val.categoryid,
-          };
-          if (val.Instructorid !== undefined) {
-            axios
-              .get(`http://127.0.0.1:8000/instructorfromid/${val.Instructorid}`)
-              .then((res) => {
-                let instructor = {
-                  instructor: res.data.data.instructor,
-                  channelName: res.data.data.channelName,
-                  channelLink: res.data.data.channelLink,
-                  categoryid: res.data.data.categoryid,
-                  instructorprofile: res.data.data.instructorprofile,
-                  channelAbout: res.data.data.channelAbout,
-                };
-                let allitems = { ...course, ...instructor };
-                if (val.user !== undefined) {
-                  axios
-                    .get(`http://127.0.0.1:8000/user/${val.user}`)
-                    .then((res) => {
-                      let user = {
-                        username: res.data.data.name,
-                        userprofile: res.data.data.profile,
-                      };
-                      let withuser = { ...allitems, ...user };
-                      setData(withuser);
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
-                }
-                setData(allitems);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    fetchapis();
+    getCourseDescription(id, setData);
 
-    axios
-      .get(`http://127.0.0.1:8000/loadVideos/${id}`)
-      .then((res) => {
-        setVideos(res.data.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    getCourseVideos(id, setVideos);
   }, []);
 
   const handleVideo = (video) => {
     setVideo(video);
     navigate("/Viewer");
   };
+  
   return load ? (
     <Loader />
   ) : (
@@ -187,7 +128,7 @@ const CourseDescription = ({ setVideo }) => {
           </div>
           <ButtonAbt
             text="View Course on Youtube"
-            path={data.channelLink}
+            path={"https://www.youtube.com/@"+data.channelLink}
             target={"_blank"}
             color={"#9381ff"}
           ></ButtonAbt>

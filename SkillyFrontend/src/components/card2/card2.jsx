@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./card2.css";
-import temp from "../../assets/fa.jpg";
 import { Link } from "react-router-dom";
 
 const Card2 = ({ details }) => {
-  details.channelLink = "https://www.youtube.com/c/" + details.channelLink;
+  useEffect(() => {
+    details.channelLink = "https://www.youtube.com/c/" + details.channelLink;
+  }, []);
   const {
     id,
     instructor,

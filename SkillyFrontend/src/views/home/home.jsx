@@ -9,10 +9,12 @@ import Feature from "../../components/feature/feature";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {getCategories} from "../../codes/api/Categories";
+import { getInstructors } from "../../codes/api/Instructors";
+import {getCourses} from "../../codes/api/Courses";
 
 const Home = () => {
   const navigate = useNavigate();
-
   const [topcat, settopcat] = useState([]);
   const [topins, settopins] = useState([]);
   const [courses, setCourses] = useState([]);
@@ -20,68 +22,9 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Skilly - Home";
-    axios.get("http://127.0.0.1:8000/category").then(
-      (res) => {
-        let data = res.data.data;
-        data.map((value, index) => {
-          if (index < 5) {
-            let cat = {
-              id: value.id,
-              name: value.name,
-              img: value.image,
-              desc: value.description,
-            };
-            settopcat((prev) => [...prev, cat]);
-          }
-        });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-
-    axios
-      .get("http://127.0.0.1:8000/instructor")
-      .then((res) => {
-        let data = res.data.data;
-        data.map((value, index) => {
-          if (index < 4) {
-            let ins = {
-              id: value.id,
-              instructor: value.instructor,
-              instructorprofile: value.instructorprofile,
-              channelAbout: value.channelAbout,
-            };
-            settopins((prev) => [...prev, ins]);
-          }
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    axios
-      .get("http://127.0.0.1:8000/course")
-      .then((res) => {
-        let data = res.data.data;
-        data.map((value, index) => {
-          if (index < 10) {
-            let course = {
-              id: value.id,
-              name: value.name,
-              desc: value.description,
-              img: value.image,
-              catid: value.categoryid,
-              insid: value.Instructorid,
-              courselink: value.courselink,
-            };
-            setCourses((prev) => [...prev, course]);
-          }
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getCategories(settopcat, 5);
+    getInstructors(settopins);
+    getCourses(setCourses, 10);
   }, []);
 
   return (
@@ -136,6 +79,7 @@ const Home = () => {
               name={item.name}
               img={assets[item.img]}
               desc={item.desc}
+              cat={item.id}
             />
           ))}
         </HorizontalScroller>

@@ -22,12 +22,14 @@ const Toast = ({ message, play, setPlay, color }) => {
                 opacity: ".8",
                 "--color": color,
                 color: color === "#EF233C" ? "#edf2f4" : "#000717",
+                display: "block",
               }
             : {
                 transform: "translateX(-100%)",
                 opacity: "0",
                 "--color": color,
                 color: color === "#EF233C" ? "#edf2f4" : "#000717",
+                display: "none",
               }
         }
       >

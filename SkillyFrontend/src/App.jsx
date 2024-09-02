@@ -11,17 +11,16 @@ import Profile from "./views/Profile/Profile";
 import CourseDescription from "./views/CourseDescription/CourseDescription";
 import Viewer from "./views/Viewer/Viewer";
 import Category from "./views/category/category";
-import axios from "axios";
 import { Route, Routes, useLocation, Link, Navigate } from "react-router-dom";
-import Input from "./components/input/input";
 import SignUpM from "./components/Components for App_JSX/signup";
 import Login from "./components/Components for App_JSX/login";
 import AddCourseM from "./components/Components for App_JSX/AddCourseM";
-import enterNewPass from "./components/Forgot Items/enterNewPass";
-import enterOTP from "./components/Forgot Items/enterOTP";
-import enterEmail from "./components/Forgot Items/enterEmail";
-import showCategoryMenu from "./codes/api/showCategoryMenu";
+import { showCategoryMenu } from "./codes/api/Categories";
 import Toast from "./components/toast/toast";
+import EditCourseM from "./components/Components for App_JSX/EditCourseM";
+import EnterEmail from "./components/Forgot Items/enterEmail";
+import EnterNewPass from "./components/Forgot Items/enterNewPass";
+import EnterOTP from "./components/Forgot Items/enterOTP";
 
 function App() {
   const [pass, setpass] = useState("");
@@ -39,6 +38,8 @@ function App() {
   const [video, setVideo] = useState({});
   const [playlistlink, setPlaylistlink] = useState("");
   const [play, setPlay] = useState(false);
+  const [toast, setToast] = useState("");
+  const [toastColor, setToastColor] = useState("#EF233C");
   let details = {
     name: name,
     email: email,
@@ -69,14 +70,27 @@ function App() {
               setpass={setpass}
               setConpass={setConpass}
               setprofile={setprofile}
+              play={play}
               setPlay={setPlay}
+              setToastColor={setToastColor}
+              setToast={setToast}
             />
           }
         />
         <Route
           path="/login"
           element={
-            <Login details={details} setemail={setemail} setpass={setpass} />
+            <>
+              <Login
+                details={details}
+                setemail={setemail}
+                setpass={setpass}
+                play={play}
+                setPlay={setPlay}
+                setToastColor={setToastColor}
+                setToast={setToast}
+              />
+            </>
           }
         />
         <Route path="/courses" element={<Courses />} />
@@ -99,6 +113,23 @@ function App() {
               setPlaylistlink={setPlaylistlink}
               setChannelLink={setChannelLink}
               setTeacher={setTeacher}
+              category={category}
+              setSelectedCategory={setSelectedCategory}
+              play={play}
+              setPlay={setPlay}
+              setToastColor={setToastColor}
+              setToast={setToast}
+            />
+          }
+        />
+        <Route
+          path="/editcourse"
+          element={
+            <EditCourseM
+              play={play}
+              setPlay={setPlay}
+              setToastColor={setToastColor}
+              setToast={setToast}
             />
           }
         />
@@ -109,22 +140,52 @@ function App() {
         />
         <Route
           path="/forgot"
-          element={<enterEmail email={email} setemail={setemail} />}
+          element={
+            <EnterEmail
+              email={email}
+              setemail={setemail}
+              play={play}
+              setPlay={setPlay}
+              setToastColor={setToastColor}
+              setToast={setToast}
+            />
+          }
         />
-        <Route path="/otp" element={<enterOTP otp={otp} setotp={setotp} />} />
+        <Route
+          path="/otp"
+          element={
+            <EnterOTP
+              otp={otp}
+              setotp={setotp}
+              play={play}
+              setPlay={setPlay}
+              setToastColor={setToastColor}
+              setToast={setToast}
+            />
+          }
+        />
         <Route
           path="/forgotpass"
           element={
-            <enterNewPass
+            <EnterNewPass
               pass={pass}
               conpass={conpass}
               setpass={setpass}
               setConpass={setConpass}
+              play={play}
+              setPlay={setPlay}
+              setToastColor={setToastColor}
+              setToast={setToast}
             />
           }
         />
       </Routes>
-      {/* <Toast message="Testing..." play={play} setPlay={setPlay}></Toast> */}
+      <Toast
+        message={toast}
+        play={play}
+        setPlay={setPlay}
+        color={toastColor}
+      ></Toast>
 
       {!shownavfoot && <Footer />}
     </>

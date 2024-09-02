@@ -1,7 +1,9 @@
 import React from "react";
 import "./searchbar.css";
+import { useState } from "react";
 
-const SearchBar = ({ placeholder }) => {
+const SearchBar = ({ placeholder,search,setSearch,func }) => {
+  
   return (
     <>
       <div className="searchBox">
@@ -10,8 +12,9 @@ const SearchBar = ({ placeholder }) => {
           type="text"
           name=""
           placeholder={placeholder}
+          onChange={(e) => setSearch(e.target.value)}
         />
-        <button className="searchButton" href="#">
+        <button className="searchButton" onClick={() => {func()}}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="29"

@@ -1,7 +1,9 @@
 import React from "react";
 import AddCourse from "../../views/AddCourse/AddCourse";
+import Input from "../../components/input/input";
+import { Link } from "react-router-dom";
 
-const AddCourseM = (
+const AddCourseM = ({
   courseName,
   teacher,
   channelLink,
@@ -10,8 +12,14 @@ const AddCourseM = (
   setCourseName,
   setPlaylistlink,
   setChannelLink,
-  setTeacher
-) => {
+  setTeacher,
+  setSelectedCategory,
+  category,
+  play,
+  setPlay,
+  setToastColor,
+  setToast,
+}) => {
   return (
     <AddCourse
       type={"add"}
@@ -22,6 +30,10 @@ const AddCourseM = (
       channelLink={channelLink}
       playlistlink={playlistlink}
       Category={selectedCategory}
+      play={play}
+      setPlay={setPlay}
+      setToastColor={setToastColor}
+      setToast={setToast}
     >
       <Input typ="text" placeholder="Course Name" setdata={setCourseName} />
       <div className="menu">

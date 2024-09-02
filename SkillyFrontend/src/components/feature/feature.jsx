@@ -1,6 +1,5 @@
 import React from "react";
 import "./feature.css";
-import { Link } from "react-router-dom";
 import ButtonAbt from "../button/button";
 const Feature = ({ position, title, desc, img, btnText, btnlink }) => {
   let path = "/" + btnlink;

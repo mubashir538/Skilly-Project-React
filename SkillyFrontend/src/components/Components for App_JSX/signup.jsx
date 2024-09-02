@@ -11,6 +11,9 @@ const SignUpM = ({
   setConpass,
   setprofile,
   setPlay,
+  play,
+  setToast,
+  setToastColor,
 }) => {
   return (
     <>
@@ -25,6 +28,9 @@ const SignUpM = ({
         pic={assets.f3}
         details={details}
         setPlay={setPlay}
+        play={play}
+        setToast={setToast}
+        setToastColor={setToastColor}
       >
         <Input typ="text" placeholder="Name" setdata={setname} />
         <Input typ="email" placeholder="Email" setdata={setemail} />

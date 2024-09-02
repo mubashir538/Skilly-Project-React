@@ -2,7 +2,7 @@ import React, { Children } from "react";
 import "./horizontalscroller.css";
 import { useRef, useState } from "react";
 
-const HorizontalScroller = ({children}) => {
+const HorizontalScroller = ({ children }) => {
   const scrollContainerRef = useRef(null);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -12,30 +12,26 @@ const HorizontalScroller = ({children}) => {
     const scrollContainer = scrollContainerRef.current;
     setIsDown(true);
     scrollContainer.classList.add("active");
-    console.log("mousedown");
     setStartX(e.pageX - scrollContainer.offsetLeft);
     setScrollLeft(scrollContainer.scrollLeft);
   };
 
   const handleMouseLeave = () => {
     setIsDown(false);
-    console.log("mouseleave");
     scrollContainerRef.current.classList.remove("active");
   };
 
   const handleMouseUp = () => {
     setIsDown(false);
-    console.log("mouseup");
     scrollContainerRef.current.classList.remove("active");
   };
 
   const handleMouseMove = (e) => {
     if (!isDown) return;
     e.preventDefault();
-    console.log("mousemove");
     const scrollContainer = scrollContainerRef.current;
     const x = e.pageX - scrollContainer.offsetLeft;
-    const walk = (x - startX) * 3; // Adjust the scroll speed by changing the multiplier
+    const walk = (x - startX) * 3;
     scrollContainer.scrollLeft = scrollLeft - walk;
   };
   return (
@@ -47,7 +43,7 @@ const HorizontalScroller = ({children}) => {
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
     >
-        {children}
+      {children}
     </div>
   );
 };

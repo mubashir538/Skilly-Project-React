@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import { assets } from "../../assets/app";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import { getImage, clearCookies } from "../../codes/functions/Cookie";
 import Cookies from "js-cookie";
-import axios from "axios";
 
 export const Navbar = () => {
   const [page, setpage] = useState("home");
@@ -12,7 +12,7 @@ export const Navbar = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    getImage();
+    getImage(setProfile);
   }, []);
 
   const changePages = (path) => {
@@ -20,24 +20,10 @@ export const Navbar = () => {
   };
 
   const handlelogout = () => {
-    localStorage.clear();
-    Cookies.remove("refresh_token");
-    Cookies.remove("user");
-    Cookies.remove("access_token");
+    clearCookies();
     window.open("/login", "_self");
   };
 
-  const getImage = () => {
-    if (Cookies.get("user") != null) {
-      let user = Cookies.get("user");
-      let values = user.split(",");
-      let profile = values[4];
-      let image = profile.split('"')[3];
-      setProfile("http://127.0.0.1:8000" + image);
-    } else {
-      setProfile(assets.displaypic);
-    }
-  };
   return (
     <>
       <div className="container-fluid navbar navbar-expand-md">

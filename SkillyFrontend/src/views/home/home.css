@@ -1,11 +1,6 @@
 .header {
   width: 100%;
   height: 90vh;
-  /* background: hsla(353, 86%, 54%, 1);
-    background: linear-gradient(135deg, hsla(353, 86%, 54%, 1) 0%, hsla(249, 100%, 75%, 1) 100%);
-    background: -moz-linear-gradient(135deg, hsla(353, 86%, 54%, 1) 0%, hsla(249, 100%, 75%, 1) 100%);
-    background: -webkit-linear-gradient(35deg, hsla(353, 86%, 54%, 1) 0%, hsla(249, 100%, 75%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EF233C", endColorstr="#9381FF", GradientType=1 );  */
   background: #000717;
   background: linear-gradient(330deg, #000717 50%, #161c2a 100%);
   background: -moz-linear-gradient(330deg, #000717 50%, #161c2a 100%);
@@ -14,13 +9,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  user-select: none;
 }
 
-.header>.image {
+
+
+.header > .image {
   padding: 2rem 4rem;
 }
 
-.header>.title {
+.header > .title {
   padding: 4rem;
   font-family: "montserrat", sans-serif;
   color: #edf2f4;
