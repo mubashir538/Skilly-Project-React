@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+  gap: 2rem;
   height: 50vh;
   width: 100%;
   background-color: #ef233c;
@@ -10,7 +11,7 @@
 }
 
 .coursedesc > .head > .img {
-  width: 40%;
+  width: 25vw;
 }
 
 .coursedesc > * > h1 {
@@ -23,7 +24,9 @@
 }
 
 .coursedesc > .head > .img > img {
-  width: 80%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .coursedesc > .head > .text {
@@ -54,7 +57,7 @@
 }
 
 .coursedesc > .head > .text > .channel > img {
-  width: 30%;
+  width: 10vw;
   border-radius: 50%;
   margin: 1.5rem;
   margin-left: 0;

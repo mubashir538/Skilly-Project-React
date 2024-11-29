@@ -52,6 +52,7 @@ def deleteCourse(request,id):
 
 @api_view(['GET','POST'])
 def category(request):
+    
     if request.method == 'GET':
         cats = Cat.objects.all()
         serializer = CategorySerializer(cats,many=True)
@@ -87,7 +88,7 @@ def instructor(request,catid=0):
             url = channel.split('@')[1]
         else:
             url = channel
-        if not Instructor.objects.filter(channelLink=url).exists():
+        if not Instructor.objects.filter(channelLink=url).exists(): 
             params = {
             'part': 'snippet',
             'key': key,
